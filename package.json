@@ -1,0 +1,28 @@
+{
+  "name": "launch-layer",
+  "version": "1.0.2",
+  "description": "Its a boilerplate code generator.",
+  "main": "index.js",
+  "bin": {
+    "laulyr": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/26th-Official/LaunchLayers-cli.git"
+  },
+  "author": "26th_official",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/26th-Official/LaunchLayers-cli/issues"
+  },
+  "homepage": "https://github.com/26th-Official/LaunchLayers-cli#readme",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.7"
+  }
+}
+
+
