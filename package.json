@@ -1,6 +1,6 @@
 {
   "name": "launch-layer",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Its a boilerplate code generator.",
   "main": "index.js",
   "type": "module",
