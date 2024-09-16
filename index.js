@@ -16,9 +16,7 @@ const isValidFileId = (fileId) => {
 
 // Function to download the zip file
 const downloadZip = async (url, destination) => {
-  try {
-    console.log(`Downloading file from ${url}`);
-    
+  try {    
     // Make a GET request to download the file using Axios
     const response = await axios({
       method: 'GET',
@@ -28,13 +26,12 @@ const downloadZip = async (url, destination) => {
 
     // Save the downloaded file as a zip in the specified destination
     fs.writeFileSync(destination, response.data);
-    console.log(`File downloaded successfully to ${destination}`);
   } catch (error) {
     if (error.response && error.response.status === 404) {
-        console.error('Error: File not found. Please check the file ID and try again.');
+        console.error('\n\x1b[31mError:\x1b[0m File not found. Please check the file ID and try again.\n');
         process.exit(1);
     } else{
-        console.error(`Error: Something went wrong! - (${error.message})`);
+        console.error(`\n\x1b[31mError:\x1b[0m Something went wrong! - \x1b[31m(${error.message})\x1b[0m\n`);
         process.exit(1);
     }
   }
@@ -67,7 +64,7 @@ const main = async () => {
     const args = process.argv.slice(2);
 
     if (args.length === 0) {
-      console.error('Error: Please provide a file ID.');
+      console.error('\n\x1b[31mError:\x1b[0m Please provide a file ID.\n');
       process.exit(1);
     }
 
@@ -75,14 +72,14 @@ const main = async () => {
 
     // Validate file ID format
     if (!isValidFileId(fileId)) {
-      console.error('Error: Invalid file ID format. Expected format is a UUID, e.g., 1af45a65-6381-4ac4-ac9f-83d054e4e184');
+      console.error('\n\x1b[31mError:\x1b[0m Invalid file ID format. Expected format is a UUID, e.g., 1af45a65-6381-4ac4-ac9f-83d054e4e184\n');
       
       process.exit(1);
     }
 
     // Prompt for folder name
     const defaultFolderName = 'laulyr';
-    const folderName = await promptUserInput(`Template name: (${defaultFolderName}) `);
+    const folderName = await promptUserInput(`\n\x1b[32mTemplate name:\x1b[0m (${defaultFolderName}) `);
     
     // Use default folder name if no input is provided
     const finalFolderName = folderName.trim() || defaultFolderName;
@@ -103,9 +100,11 @@ const main = async () => {
 
     // Optionally, delete the zip file after extraction
     fs.unlinkSync(zipPath);
+
+    console.log("\n\x1b[32mDone:\x1b[0m Template downloaded and extracted successfully!\n");
     
   } catch (error) {
-    console.error(`Error: Something went wrong! - (${error.message})`);
+    console.error(`\n\x1b[31m\x1b[31mError:\x1b[0m\x1b[0m Something went wrong! - \x1b[31m(${error.message})\x1b[0m\n`);
     process.exit(1);
   }
 };
