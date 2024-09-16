@@ -1,10 +1,11 @@
 {
   "name": "launch-layer",
-  "version": "1.0.2",
+  "version": "1.1.3",
   "description": "Its a boilerplate code generator.",
   "main": "index.js",
+  "type": "module",
   "bin": {
-    "laulyr": "./index.js"
+    "laulyr": "index.js"
   },
   "scripts": {
     "start": "node index.js"
@@ -24,5 +25,3 @@
     "axios": "^1.7.7"
   }
 }
-
-
